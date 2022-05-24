@@ -11,7 +11,7 @@ am = 2;
 fm = 10;
 f2 = 3;
 fs = 100;
-bit_duration = 1; % bitrate = 1/bitduration
+bit_duration = 2; % bitrate = 1/bitduration
 T = length(bit) * bit_duration; % len/bitrate.
 t = 0:1/fs:T;
 
@@ -75,9 +75,9 @@ grid on;
 %Demodulation
 counter = 0;
 for i = 1 : length(t)
-  if t(i) > counter
+  if t(i) > counter * bit_duration
     counter = counter + 1;
-    if fsk((counter-1)*fs+1:counter*fs) == x_analog((counter-1)*fs+1:counter*fs)
+    if fsk((counter-1)*fs*bit_duration+1:counter*fs*bit_duration) == x_analog((counter-1)*fs*bit_duration+1:counter*bit_duration*fs)
       result(counter) = 1;
     else
       result(counter) = 0;
