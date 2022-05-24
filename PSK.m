@@ -57,10 +57,8 @@ for i = 1:length(bit)
     
     if bit(i) == 1
         psk(from:to) = x_analog(from:to);
-        p1 = round(trapz(psk(from:to)));
     else
         psk(from:to) = x_analog_2(from:to);
-        p2 = round(trapz(psk(from:to)));
     end
 end
 
